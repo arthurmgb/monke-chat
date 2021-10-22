@@ -1,6 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <a style="padding: 5px; color: #555;" href="{{route('chat')}}">
+                <i class="fad fa-arrow-circle-left fa-fw fa-lg"></i> 
+            </a>
             {{ __('Perfil') }}
         </h2>
     </x-slot>

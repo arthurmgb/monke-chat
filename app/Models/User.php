@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'usuario',
         'password',
+        'is_online',
     ];
 
     /**
@@ -62,4 +63,9 @@ class User extends Authenticatable
     public function tarefas(){
         return $this->hasMany(Tarefa::class);
     }
+
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
+
 }
