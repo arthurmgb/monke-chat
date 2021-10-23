@@ -10,6 +10,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', TarefaComponent::class)->name('home');
 
     Route::get('/', Mensagem::class)->name('chat');
+
+    Route::get('/storagelink', function () {
+        Artisan::call('storage:link');
+    });
     
 });
 
