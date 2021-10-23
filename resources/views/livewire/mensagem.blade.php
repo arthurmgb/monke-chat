@@ -2,9 +2,9 @@
     @if($receiver)
     
     <div id="page-chat" class="card border-top-0">
-        <div class="card-body px-0 py-0">
+        <div id="online-poll" class="card-body px-0 py-0" wire:poll.1000ms="update_unseen">
 
-            <div class="card-title mb-0" wire:ignore>
+            <div class="card-title mb-0">
                 <div class="d-flex flex-row align-items-center justify-content-between">
                     <div class="div-left ms-2 d-flex flex-row align-items-center justify-content-between">
 
@@ -19,13 +19,16 @@
                             <div class="d-flex flex-column">
 
                                 <span class="user-name user-in-chat ps-3">{{$user_info->name}}</span>
+                                @if($user_info->isOnline())
                                 <span class="is-online ps-3">online</span>
+                                @endif
+
                             </div>
                         </div>
                         
                     </div>
     
-                    <div class="div-right">
+                    <div class="div-right" wire:ignore>
 
                         <div class="dropdown">
                             <button class="btn-right" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="chat-messages" id="chat-box-messages" wire:poll.1000ms="update_unseen">
+            <div class="chat-messages" id="chat-box-messages">
 
                 @foreach ($pack_messages as $message)
 
@@ -79,9 +82,9 @@
               
             </div>
             
-            <div class="chat-input d-flex flex-row align-items-center">
+            <div class="chat-input d-flex flex-row align-items-center" wire:ignore>
 
-                <textarea class="input-msg mx-2" rows="1" autofocus autocomplete="off" placeholder="Mensagem" wire:model.defer="mensagem"></textarea>
+                <textarea class="input-msg mx-2" rows="1" autofocus autocomplete="off" placeholder="Mensagem" wire:model.defer="mensagem" wire:click.prevent="scrollDown"></textarea>
 
                 <button class="btn btn-lg me-2 btn-send" wire:click.prevent="sendMessage()" wire:loading.attr="disabled">
                     <i class="fas fa-paper-plane"></i>
@@ -103,7 +106,7 @@
                         <span class="fw-500 ms-1">MonkeChat</span>
                     </div>
     
-                    <div class="div-right">
+                    <div class="div-right" wire:ignore>
                         <div class="dropdown dropstart">
                             <button class="btn-right" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="far fa-ellipsis-v fa-lg"></i>
@@ -112,7 +115,7 @@
                                 <li><a class="dropdown-item" href="{{route('profile.show')}}">Editar perfil</a></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
+                                        @csrf
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
                                             Sair
                                         </a>

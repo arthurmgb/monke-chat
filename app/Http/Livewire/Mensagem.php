@@ -61,6 +61,10 @@ class Mensagem extends Component
 
     }
 
+    public function scrollDown(){
+        $this->dispatchBrowserEvent('scrollDown');
+    }
+
     public function render()
     {
 

@@ -23,6 +23,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+      $(window).on('focus', function () {
+        $('#online-poll').attr('wire:poll.1000ms', 'update_unseen');
+      });
+
+      $(window).on('blur', function () {
+        $('#online-poll').removeAttr('wire:poll.1000ms');
+      });
+    </script>
+
+    <script>
       window.addEventListener('scrollDown', event =>{
         var objDiv = document.getElementById("chat-box-messages");
         objDiv.scrollTop = objDiv.scrollHeight;

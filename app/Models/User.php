@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Cache;
 
 class User extends Authenticatable
 {
@@ -59,6 +60,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function isOnline(){
+        return Cache::has('user-is-online-' . $this->id);
+    }
 
     public function tarefas(){
         return $this->hasMany(Tarefa::class);
