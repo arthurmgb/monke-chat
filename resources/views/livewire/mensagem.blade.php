@@ -84,7 +84,7 @@
             
             <div class="chat-input d-flex flex-row align-items-center" wire:ignore>
 
-                <textarea class="input-msg mx-2" rows="1" autofocus autocomplete="off" placeholder="Mensagem" wire:model.defer="mensagem" wire:click.prevent="scrollDown"></textarea>
+                <textarea class="input-msg mx-2" rows="1" autocomplete="off" placeholder="Mensagem" wire:model.defer="mensagem" wire:click.prevent="scrollDown"></textarea>
 
                 <button class="btn btn-lg me-2 btn-send" wire:click.prevent="sendMessage()" wire:loading.attr="disabled">
                     <i class="fas fa-paper-plane"></i>
@@ -99,24 +99,28 @@
     <div id="page-user" class="card border-top-0">
         <div class="card-body px-0 pt-0">
 
-            <div style="margin-bottom: 2px;" class="card-title" wire:ignore>
+            <div style="margin-bottom: 2px;" class="card-title">
                 <div class="d-flex flex-row align-items-center justify-content-between">
                     <div class="div-left ms-1">
-                        <img style="-webkit-user-drag: none;" src="{{asset('img/monkey.png')}}">
+                        <img style="-webkit-user-drag: none; width: 32px; height: 32px;" src="{{asset('img/monke.png')}}">
                         <span class="fw-500 ms-1">MonkeChat</span>
                     </div>
     
-                    <div class="div-right" wire:ignore>
+                    <div class="div-right">
                         <div class="dropdown dropstart">
-                            <button class="btn-right" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button id="remove-poll" class="btn-right" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="far fa-ellipsis-v fa-lg"></i>
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" wire:ignore>
                                 <li><a class="dropdown-item" href="{{route('profile.show')}}">Editar perfil</a></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        
+                                        {{ csrf_field() }}
+                                        
+                                        <a class="dropdown-item" href="{{ route('logout') }}" 
+                                        onclick="event.preventDefault(); 
+                                        this.closest('form').submit();">
                                             Sair
                                         </a>
                                     </form>
@@ -127,7 +131,7 @@
                 </div>
             </div>
 
-            <div class="list-of-users" wire:poll.1000ms>
+            <div id="poll-btn-remove" class="list-of-users" wire:poll.1000ms>
 
                 @foreach ($users as $user)
 
@@ -151,7 +155,9 @@
                         $diferenca = $diff->format('%d');
                         $diferenca = intval($diferenca);
                         
-                        if($diferenca >= 1){
+                        if($diferenca == 1){
+                            $ultima_mensagem_hora = 'Ontem';
+                        }elseif($diferenca > 1){
                             $ultima_mensagem_hora = $ultima_mensagem->created_at->format('d/m/Y');
                         }else{
                             $ultima_mensagem_hora = $ultima_mensagem->created_at->format('H:i');
