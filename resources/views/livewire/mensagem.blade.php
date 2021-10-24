@@ -99,7 +99,7 @@
     <div id="page-user" class="card border-top-0">
         <div class="card-body px-0 pt-0">
 
-            <div style="margin-bottom: 2px;" class="card-title">
+            <div style="margin-bottom: 2px;" class="card-title" wire:ignore>
                 <div class="d-flex flex-row align-items-center justify-content-between">
                     <div class="div-left ms-1">
                         <img style="-webkit-user-drag: none; width: 32px; height: 32px;" src="{{asset('img/monke.png')}}">
@@ -108,12 +108,12 @@
     
                     <div class="div-right">
                         <div class="dropdown dropstart">
-                            <button id="remove-poll" class="btn-right" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn-right" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="far fa-ellipsis-v fa-lg"></i>
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" wire:ignore>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="{{route('profile.show')}}">Editar perfil</a></li>
-                                <li>
+                                <li id="leave-poll">
                                     <form method="POST" action="{{ route('logout') }}">
                                         
                                         {{ csrf_field() }}
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <div id="poll-btn-remove" class="list-of-users" wire:poll.1000ms>
+            <div id="poll-btn-remove" class="list-of-users" wire:poll>
 
                 @foreach ($users as $user)
 

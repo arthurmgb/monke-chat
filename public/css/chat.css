@@ -2,11 +2,7 @@
     font-family: 'Rubik';
     box-sizing: border-box;
 }
-html {
-    height: -webkit-fill-available;
-}
 body{
-    min-height: -webkit-fill-available;
     padding-right: 0px !important;
 }
 .modal{
@@ -37,7 +33,6 @@ body{
 }
 .card-body{
     height: 100vh;
-    min-height: -webkit-fill-available;
     background-color: #F9FAFB;
 }
 .fw-500{
