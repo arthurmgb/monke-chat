@@ -107,13 +107,13 @@
                     </div>
     
                     <div class="div-right">
-                        <div class="dropdown dropstart">
+                        <div class="dropdown dropstart" id="drop-main">
                             <button class="btn-right" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="far fa-ellipsis-v fa-lg"></i>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="{{route('profile.show')}}">Editar perfil</a></li>
-                                <li id="leave-poll">
+                                <li>
                                     <form method="POST" action="{{ route('logout') }}">
                                         
                                         {{ csrf_field() }}

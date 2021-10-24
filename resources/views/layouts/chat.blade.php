@@ -19,18 +19,21 @@
         @yield('content')
     </div>
 
-
     @livewireScripts
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
     <script>
-      $(document).ready(function() {
-          $("#leave-poll").click(function(){
-            $('#poll-btn-remove').removeAttr('wire:poll');
-          }); 
+      var myDropdown = document.getElementById('drop-main');
+
+      myDropdown.addEventListener('show.bs.dropdown', function () {
+        $('#poll-btn-remove').removeAttr('wire:poll');
       });
+
+      myDropdown.addEventListener('hide.bs.dropdown', function () {
+        $('#poll-btn-remove').attr('wire:poll', '');
+      });
+
     </script>
 
     <script>
