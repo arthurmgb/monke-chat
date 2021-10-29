@@ -106,7 +106,36 @@
                         <span class="fw-500 ms-1">MonkeChat</span>
                     </div>
     
-                    <div class="div-right">
+                    <div class="div-right d-flex flex-row align-items-center">
+                        <button id="goFS" class="btn-right me-1">
+                            <i class="far fa-expand-arrows-alt fa-lg"></i>
+                        </button>
+                        <button style="display: none;" id="outFS" class="btn-right me-1">
+                            <i class="far fa-compress-arrows-alt fa-lg"></i>
+                        </button>
+                        <script>
+  
+                            var goFS = document.getElementById("goFS");
+                            var outFS = document.getElementById("outFS");
+                        
+                            goFS.addEventListener("click", function() {
+                                goFS.style.display = "none";
+                                document.documentElement.requestFullscreen();
+                                outFS.style.display = "block";                               
+                            }, false);
+                      
+                            outFS.addEventListener("click", function() {
+                                outFS.style.display = "none";
+                                document.exitFullscreen();
+                                goFS.style.display = "block";                               
+                            }, false);
+
+                            if( window.innerHeight == screen.height) {
+                                goFS.style.display = "none";
+                                outFS.style.display = "block";
+                            }
+
+                          </script>
                         <div class="dropdown dropstart" id="drop-main">
                             <button class="btn-right" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="far fa-ellipsis-v fa-lg"></i>
