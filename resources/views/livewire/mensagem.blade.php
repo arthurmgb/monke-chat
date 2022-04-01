@@ -2,6 +2,7 @@
     @if($receiver)
     
     <div id="page-chat" class="card border-top-0">
+        
         <div id="online-poll" class="card-body px-0 py-0" wire:poll.1000ms="update_unseen">
 
             <div class="card-title mb-0">
