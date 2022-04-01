@@ -97,6 +97,7 @@
     @else 
 
     <div id="page-user" class="card border-top-0">
+        
         <div class="card-body px-0 pt-0">
 
             <div style="margin-bottom: 2px;" class="card-title" wire:ignore>
