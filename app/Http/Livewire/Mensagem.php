@@ -9,11 +9,9 @@ use Livewire\Component;
 class Mensagem extends Component
 {
 
-    public $receiver, $user_info, $mensagem, $pack_messages;
+    public $receiver, $user_info, $pack_messages;
 
-    protected $rules = [
-        'mensagem' => 'required',
-    ];
+    protected $listeners = ['render'];
 
     public function update_unseen(){
 
@@ -32,6 +30,7 @@ class Mensagem extends Component
 
         $this->receiver = $id;
         $this->user_info = User::find($id);
+        $this->emit('getReceiverId', $this->receiver);
         $this->dispatchBrowserEvent('scrollDown');
 
     }
@@ -42,27 +41,6 @@ class Mensagem extends Component
 
     public function backToUsers(){
         $this->reset('receiver');
-        $this->reset('mensagem');
-    }
-
-    public function sendMessage(){
-
-        $this->validate();
-
-        $newMessage = new Message;
-        $newMessage->message = $this->mensagem;
-        $newMessage->sender_id = auth()->user()->id;
-        $newMessage->receiver_id = $this->receiver;
-        $newMessage->is_seen = 0;
-        $newMessage->save();
-
-        $this->reset('mensagem');
-        $this->dispatchBrowserEvent('scrollDown');
-
-    }
-
-    public function scrollDown(){
-        $this->dispatchBrowserEvent('scrollDown');
     }
 
     public function render()
@@ -80,7 +58,15 @@ class Mensagem extends Component
                                         ->get();
         }
 
-        return view('livewire.mensagem', compact('users'))
-        ->layout('pages.chat');
+        if($this->receiver){
+            $receiver_to_send_message = $this->receiver;
+            return view('livewire.mensagem', compact('users', 'receiver_to_send_message'))
+            ->layout('pages.chat');
+        }
+        else{
+            return view('livewire.mensagem', compact('users'))
+            ->layout('pages.chat');
+        }
+
     }
 }
