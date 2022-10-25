@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/chat.css')}}">
     <link href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css" rel="stylesheet">
-    <link rel="icon" href="{{asset('img/monkey.png')}}" type="image/png">
+    <link rel="icon" type="image/png" href="https://cdn3d.iconscout.com/3d/premium/thumb/cute-monkey-4997429-4159557.png" />
     <title>MonkeChat</title>
     @livewireStyles
   </head>
