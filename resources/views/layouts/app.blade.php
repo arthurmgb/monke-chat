@@ -8,7 +8,7 @@
     <title>MonkeChat</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-    <link rel="icon" type="image/png" href="https://cdn3d.iconscout.com/3d/premium/thumb/cute-monkey-4997429-4159557.png" />
+    <link rel="icon" type="image/png" href="https://cdn3d.iconscout.com/3d/premium/thumb/monkey-face-5662771-4771369.png" />
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css" rel="stylesheet">

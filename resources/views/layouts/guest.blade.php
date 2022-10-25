@@ -13,7 +13,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <link rel="icon" type="image/png" href="https://cdn3d.iconscout.com/3d/premium/thumb/cute-monkey-4997429-4159557.png" />
+        <link rel="icon" type="image/png" href="https://cdn3d.iconscout.com/3d/premium/thumb/monkey-face-5662771-4771369.png" />
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
